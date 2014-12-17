@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="ru" ng-app="TempList">
+    <head>
+        <meta charset="utf-8">
+        <title>List Post</title>
+        <link rel="stylesheet" href="libs/dist/css/bootstrap.min.css"/>
+    </head>
+    <body role="document" ng-controller="MainCtrl">
+
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">List Post</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="" ng-click="showAddForm()"> <i class="glyphicon glyphicon-plus-sign"></i> Добавить лист</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <!--Форма для добавления пациента-->
+                    <div ng-show="showingAddPatient">
+                        <form name="form">
+                            <label>Имя</label><br/>
+                            <input type="text" placeholder="Введите имя пациента" ng-model="name" name="name" class="form-control"/><br/>
+                            <button ng-click="cancelPatientForm()" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> Отмена</button>
+                            <button ng-click="sendPatient()" name="send" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-save"></i> Сохранить</button>
+                        </form>
+                    </div>
+                    <!--#Форма для добавления пациента-->
+                    <hr>
+                    <!--Поиск по пациентам-->
+                    <input type="search" placeholder="Поиск" class="form-control" ng-model="search"/>
+                    <!--#Поиск по пациентам-->
+                    <hr>
+                    <!--Список пациентов-->
+                    <div ng-repeat="patient in names | filter:search |orderBy:'name'" ng-click="selectedPatient(patient)">
+                        <a href="" ng-bind="patient.name"></a>
+                    </div>
+                    <!--#Список пациентов-->
+                </div>
+                <div class="col-sm-9">
+                    <!--Владки с температурой, давлением, пульсом-->
+                    <tabset justified="true">
+                        <tab heading="Температура">
+                            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                        </tab>
+                        <tab heading="Пульс">Данные подготавливются</tab>
+                        <tab heading="Давление">Данные подготавливются</tab>
+                        <tab heading="Данные">Данные подготавливются</tab>
+                    </tabset>
+                    <!--#Владки с температурой, давлением, пульсом-->
+                </div>
+            </div>
+        </div>
+
+
+
+        <script src="libs/jquery.min.js"></script>
+        <script src="libs/angular.min.js"></script>
+        <script src="libs/highcharts/js/highcharts.js"></script>
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+        <script src="libs/ui-bootstrap.min.js"></script>
+        <script src="app.js"></script>
+        <script src="services.js"></script>
+    </body>
+</html>
