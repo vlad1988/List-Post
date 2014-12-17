@@ -1,0 +1,9 @@
+
+.patient-block {
+    border-bottom: 1px dotted #ccc;
+    padding: 1.5%;
+}
+
+.patient-block:hover {
+    background-color: #EAEAEA;
+}

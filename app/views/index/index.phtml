@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <title>List Post</title>
         <link rel="stylesheet" href="libs/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="style.css"/>
     </head>
     <body role="document" ng-controller="MainCtrl">
 
@@ -48,8 +49,8 @@
                     <!--#Поиск по пациентам-->
                     <hr>
                     <!--Список пациентов-->
-                    <div ng-repeat="patient in names | filter:search |orderBy:'name'" ng-click="selectedPatient(patient)">
-                        <a href="" ng-bind="patient.name"></a>
+                    <div class="patient-block" ng-repeat="patient in names | filter:search |orderBy:'name'" ng-click="selectedPatient(patient)">
+                        <a style="text-decoration: none;" href="" ng-bind="patient.name"></a>
                     </div>
                     <!--#Список пациентов-->
                 </div>
