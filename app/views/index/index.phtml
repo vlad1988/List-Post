@@ -55,24 +55,26 @@
                     <!--#Список пациентов-->
                 </div>
                 <div class="col-sm-9">
-                    <!--Владки с температурой, давлением, пульсом-->
-                    <tabset justified="true">
-                        <tab heading="Температура">
-                            <div id="container-temperature" style=" height: 400px; margin: 0 auto"></div>
-                        </tab>
-                        <tab heading="Пульс">
-                            <div id="container-pulse" style=" height: 400px; margin: 0 auto"></div>
-                        </tab>
-                        <tab heading="Давление">
-                            <div id="container-pressure" style=" height: 400px; margin: 0 auto"></div>
-                        </tab>
-                        <tab heading="Данные">
-                            <div ng-include="'templates/temperature.html'">
+                    <div style="width: 100%;">
+                        <!--Владки с температурой, давлением, пульсом-->
+                        <tabset justified="true">
+                            <tab heading="Температура">
+                                <div ng-cloak id="container-temperature" style="height: 400px; margin: 0 auto"></div>
+                            </tab>
+                            <tab heading="Пульс">
+                                <div ng-cloak id="container-pulse" style="height: 400px; margin: 0 auto"></div>
+                            </tab>
+                            <tab heading="Давление">
+                                <div ng-cloak id="container-pressure" style="height: 400px; margin: 0 auto"></div>
+                            </tab>
+                            <tab heading="Данные">
+                                <div ng-cloak ng-include="'templates/temperature.html'">
 
-                            </div>
-                        </tab>
-                    </tabset>
-                    <!--#Владки с температурой, давлением, пульсом-->
+                                </div>
+                            </tab>
+                        </tabset>
+                        <!--#Владки с температурой, давлением, пульсом-->
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,45 @@
 <h4>Температура</h4>
-<hr>
+<table class="table table-hover">
+    <tr>
+        <th ng-repeat='datetemp in tempdates'>
+            {{datetemp}}
+        </th>
+    </tr>
+    <tr>
+        <td ng-repeat='tempvalue in tempvalues'>
+            {{tempvalue}}
+        </td>
+    </tr>
+</table>
 <h4>Пульс</h4>
+<table class="table table-hover">
+    <tr>
+        <th ng-repeat='datepulse in pulsedates'>
+            {{datepulse}}
+        </th>
+    </tr>
+   <tr>
+        <td ng-repeat='pulse in pulses'>
+            {{pulse}}
+        </td>
+    </tr>
+</table>
 <hr>
 <h4>Давление</h4>
-<hr>
+<table class="table table-hover">
+    <tr>
+        <th ng-repeat='datepressure in pressuredates'>
+            {{datepressure}}
+        </th>
+    </tr>
+    <tr>
+        <td ng-repeat='systolic in systolics'>
+            {{systolic}}
+        </td>
+    </tr>
+    <tr>
+        <td ng-repeat='diastolic in diastolics'>
+            {{diastolic}}
+        </td>
+    </tr>
+</table>
