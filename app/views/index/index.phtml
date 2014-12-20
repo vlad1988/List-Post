@@ -49,7 +49,7 @@
                     <!--#Поиск по пациентам-->
                     <hr>
                     <!--Список пациентов-->
-                    <div class="patient-block" ng-repeat="patient in names | filter:search |orderBy:'name'" ng-click="selectedPatient(patient)">
+                    <div class="patient-block" ng-repeat="patient in names| filter:search |orderBy:'name'" ng-click="selectedPatient(patient)">
                         <a style="text-decoration: none;" href="" ng-bind="patient.name"></a>
                     </div>
                     <!--#Список пациентов-->
@@ -64,7 +64,7 @@
                         <tab heading="Давление">Данные подготавливются</tab>
                         <tab heading="Данные">
                             <div ng-include="'templates/temperature.html'">
-                                
+
                             </div>
                         </tab>
                     </tabset>
@@ -81,7 +81,8 @@
         <script src="http://code.highcharts.com/modules/exporting.js"></script>
         <script src="libs/ui-bootstrap.min.js"></script>
         <script src="app.js"></script>
-        <script src="services.js"></script>
-        <script src="factories.js"></script>
+        <script src="services/RenderChartsService.js"></script>
+        <script src="factories/PatientFactory.js"></script>
+        <script src="services/RetrieveService.js"></script>
     </body>
 </html>

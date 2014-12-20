@@ -7,6 +7,10 @@ app.factory('Patient', ['$http', function($http){
             });
         };
         
+        var getPressureById = function(){};
+        var getPulseById = function(){};
+        var getTemperatureById = function(){};
+        
         return {
             getAllPatients:getAllPatients
         };

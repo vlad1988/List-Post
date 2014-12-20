@@ -1,7 +1,8 @@
 var app = angular.module("TempList", ['ui.bootstrap']);
 
 
-app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', function ($scope, $http, renderCharts, Patient) {
+app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', 'RetrieveData',
+    function ($scope, $http, renderCharts, Patient, RetrieveData) {
         $scope.showingAddPatient = false;
         $scope.showAddForm = function () {
             $scope.showingAddPatient = !$scope.showingAddPatient;
@@ -37,10 +38,12 @@ app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', functi
 
             $http.get('index/templist/' + patient.idpatients)
                     .then(function (result) {
-                        retriveData(result.data);
+                        retrieveData(result.data);
+                        var obj = RetrieveData.retrieveTemperature(result.data);
+                        console.log(obj.dates);
                     });
 
-            function retriveData(data) {
+            function retrieveData(data) {
                 for (var i = 0; i < data.length; i++) {
                     dates.push(data[i].date);
                 }
