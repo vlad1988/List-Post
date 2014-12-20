@@ -36,23 +36,23 @@ app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', 'Retri
             var temperature = [];
             var dates = [];
 
-            $http.get('index/templist/' + patient.idpatients)
+            Patient.getTemperatureById(patient.idpatients)
                     .then(function (result) {
-                        retrieveData(result.data);
+//                        retrieveData(result.data);
                         var obj = RetrieveData.retrieveTemperature(result.data);
-                        console.log(obj.dates);
+                        renderCharts.renderTempChart(patient, obj.dates, obj.temperature);
                     });
 
-            function retrieveData(data) {
-                for (var i = 0; i < data.length; i++) {
-                    dates.push(data[i].date);
-                }
-
-                for (var i = 0; i < data.length; i++) {
-                    temperature.push(parseFloat(data[i].temparature, 10));
-                }
-                renderCharts.renderTempChart(patient, dates, temperature);
-            }
+//            function retrieveData(data) {
+//                for (var i = 0; i < data.length; i++) {
+//                    dates.push(data[i].date);
+//                }
+//
+//                for (var i = 0; i < data.length; i++) {
+//                    temperature.push(parseFloat(data[i].temparature, 10));
+//                }
+//                renderCharts.renderTempChart(patient, dates, temperature);
+//            }
             $scope.datatemp = dates;
             $scope.temperature = temperature;
         };
