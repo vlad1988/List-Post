@@ -1,7 +1,7 @@
 var app = angular.module("TempList", ['ui.bootstrap']);
 
 
-app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', '$q', function ($scope, $http, renderCharts, $q) {
+app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', function ($scope, $http, renderCharts, Patient) {
         $scope.showingAddPatient = false;
         $scope.showAddForm = function () {
             $scope.showingAddPatient = !$scope.showingAddPatient;
@@ -17,7 +17,7 @@ app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', '$q', function ($
             $scope.showingAddPatient = false;
             setTimeout(function () {
                 $scope.$apply(function () {
-                    $http.get('index/patients')
+                    Patient.getAllPatients()
                             .success(function (response) {
                                 $scope.names = response;
                             });
@@ -25,7 +25,7 @@ app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', '$q', function ($
             }, 2000);
         };
 
-        $http.get('index/patients')
+        Patient.getAllPatients()
                 .success(function (response) {
                     $scope.names = response;
                 });
@@ -50,9 +50,10 @@ app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', '$q', function ($
                 }
                 renderCharts.renderTempChart(patient, dates, temperature);
             }
+            $scope.datatemp = dates;
+            $scope.temperature = temperature;
         };
 
-        $scope.addPatient = function () {
-        };
     }]);
+
 

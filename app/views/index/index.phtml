@@ -62,7 +62,11 @@
                         </tab>
                         <tab heading="Пульс">Данные подготавливются</tab>
                         <tab heading="Давление">Данные подготавливются</tab>
-                        <tab heading="Данные">Данные подготавливются</tab>
+                        <tab heading="Данные">
+                            <div ng-include="'templates/temperature.html'">
+                                
+                            </div>
+                        </tab>
                     </tabset>
                     <!--#Владки с температурой, давлением, пульсом-->
                 </div>
@@ -78,5 +82,6 @@
         <script src="libs/ui-bootstrap.min.js"></script>
         <script src="app.js"></script>
         <script src="services.js"></script>
+        <script src="factories.js"></script>
     </body>
 </html>
