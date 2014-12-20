@@ -22,14 +22,24 @@ class IndexController extends Controller {
         echo json_encode(Temparature::find("patients_idpatients= '" . $id . "'")->toArray(), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
     }
 
+    public function pressurelistAction($id = false) {
+        $this->view->disable();
+        echo json_encode(Pressure::find("idpatients= '" . $id . "'")->toArray(), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+    }
+
+    public function pulselistAction($id = false) {
+        $this->view->disable();
+        echo json_encode(Pulse::find("idpatients= '" . $id . "'")->toArray(), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+    }
+
     public function addPatientAction($name) {
-            $patient = new Patients();
-            $patient->name = $name;
-            if($patient->save()==false){
-                echo 'Не удалось сохранить';
-            }else {
-                echo "Отлично, пациент сохранен";
-            }
+        $patient = new Patients();
+        $patient->name = $name;
+        if ($patient->save() == false) {
+            echo 'Не удалось сохранить';
+        } else {
+            echo "Отлично, пациент сохранен";
+        }
     }
 
 }
