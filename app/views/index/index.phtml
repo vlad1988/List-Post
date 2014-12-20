@@ -58,10 +58,14 @@
                     <!--Владки с температурой, давлением, пульсом-->
                     <tabset justified="true">
                         <tab heading="Температура">
-                            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            <div id="container-temperature" style=" height: 400px; margin: 0 auto"></div>
                         </tab>
-                        <tab heading="Пульс">Данные подготавливются</tab>
-                        <tab heading="Давление">Данные подготавливются</tab>
+                        <tab heading="Пульс">
+                            <div id="container-pulse" style=" height: 400px; margin: 0 auto"></div>
+                        </tab>
+                        <tab heading="Давление">
+                            <div id="container-pressure" style=" height: 400px; margin: 0 auto"></div>
+                        </tab>
                         <tab heading="Данные">
                             <div ng-include="'templates/temperature.html'">
 

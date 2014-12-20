@@ -33,28 +33,22 @@ app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', 'Retri
 
         $scope.selectedPatient = function (patient) {
 
-            var temperature = [];
-            var dates = [];
-
             Patient.getTemperatureById(patient.idpatients)
                     .then(function (result) {
-//                        retrieveData(result.data);
                         var obj = RetrieveData.retrieveTemperature(result.data);
                         renderCharts.renderTempChart(patient, obj.dates, obj.temperature);
                     });
+            Patient.getPressureById(patient.idpatients)
+                    .then(function (result) {
+                        var obj = RetrieveData.retrievePressure(result.data);
+                        renderCharts.renderPressureChart(patient, obj.dates, obj.systolic, obj.diastolic);
+                    });
+            Patient.getPulseById(patient.idpatients)
+                    .then(function (result) {
+                        var obj = RetrieveData.retrievePulse(result.data);
+                        renderCharts.renderPulseChart(patient, obj.dates, obj.pulse);
+                    });
 
-//            function retrieveData(data) {
-//                for (var i = 0; i < data.length; i++) {
-//                    dates.push(data[i].date);
-//                }
-//
-//                for (var i = 0; i < data.length; i++) {
-//                    temperature.push(parseFloat(data[i].temparature, 10));
-//                }
-//                renderCharts.renderTempChart(patient, dates, temperature);
-//            }
-            $scope.datatemp = dates;
-            $scope.temperature = temperature;
         };
 
     }]);

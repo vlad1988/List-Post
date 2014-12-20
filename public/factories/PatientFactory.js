@@ -7,9 +7,18 @@ app.factory('Patient', ['$http', function ($http) {
             });
         };
 
-        var getPressureById = function () {
+        var getPressureById = function (id) {
+            return $http({
+                method: 'GET',
+                url: 'index/pressurelist/' + id
+            });
         };
-        var getPulseById = function () {
+        
+        var getPulseById = function (id) {
+            return $http({
+                method: 'GET',
+                url: 'index/pulselist/' + id
+            });
         };
         
         var getTemperatureById = function (id) {
@@ -21,6 +30,8 @@ app.factory('Patient', ['$http', function ($http) {
 
         return {
             getAllPatients: getAllPatients,
-            getTemperatureById: getTemperatureById
+            getTemperatureById: getTemperatureById,
+            getPressureById: getPressureById,
+            getPulseById: getPulseById
         };
     }]);
