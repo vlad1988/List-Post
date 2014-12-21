@@ -1,0 +1,11 @@
+<div class="list-patient" ng-hide="showPanels">
+    <table class="table  table-condensed">
+        <tr ng-repeat='patient in names'>
+            <td>{{patient.name}}</td> 
+            <td>
+                <button ng-click='deletePatient(patient.idpatients)' class='btn btn-sm btn-danger'> <i class='glyphicon glyphicon-remove'></i> </button>
+                <button class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-edit'></i> </button>
+            </td>       
+        </tr>
+    </table>
+</div>

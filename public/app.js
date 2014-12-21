@@ -4,6 +4,11 @@ var app = angular.module("TempList", ['ui.bootstrap']);
 app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', 'RetrieveData',
     function ($scope, $http, renderCharts, Patient, RetrieveData) {
         $scope.showingAddPatient = false;
+        $scope.showPanels = true;
+
+        $scope.showingPanels = function () {
+            $scope.showPanels = !$scope.showPanels;
+        };
         $scope.showAddForm = function () {
             $scope.showingAddPatient = !$scope.showingAddPatient;
         };
@@ -32,7 +37,7 @@ app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', 'Retri
                 });
 
         $scope.selectedPatient = function (patient) {
-
+            $scope.showPanels = true;
             Patient.getTemperatureById(patient.idpatients)
                     .then(function (result) {
                         var obj = RetrieveData.retrieveTemperature(result.data);
@@ -56,6 +61,19 @@ app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', 'Retri
                         $scope.pulses = obj.pulse;
                     });
 
+        };
+        $scope.deletePatient = function (id) {
+            Patient.deletePatientById(id)
+                    .success(function (data, status) {
+                    });
+            setTimeout(function () {
+                $scope.$apply(function () {
+                    Patient.getAllPatients()
+                            .success(function (response) {
+                                $scope.names = response;
+                            });
+                });
+            }, 2000);
         };
 
     }]);

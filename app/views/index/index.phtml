@@ -24,6 +24,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="" ng-click="showAddForm()"> <i class="glyphicon glyphicon-plus-sign"></i> Добавить лист</a></li>
+                        <li><a href="" ng-click="showingPanels()"><i class="glyphicon glyphicon-user"></i> Список пациентов</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -55,7 +56,9 @@
                     <!--#Список пациентов-->
                 </div>
                 <div class="col-sm-9">
-                    <div id="block">
+                    <div ng-include="'templates/listpatient.html'">                 
+                    </div>
+                    <div id="charts-block" ng-show="showPanels">
                         <!--Владки с температурой, давлением, пульсом-->
                         <tabset justified="true">
                             <tab heading="Температура">

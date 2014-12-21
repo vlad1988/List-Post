@@ -41,5 +41,10 @@ class IndexController extends Controller {
             echo "Отлично, пациент сохранен";
         }
     }
+    
+    public function deletePatientAction($id=false){
+        $patient = Patients::findFirst($id);
+        $patient->delete();
+    }
 
 }

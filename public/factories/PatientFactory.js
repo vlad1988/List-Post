@@ -27,11 +27,19 @@ app.factory('Patient', ['$http', function ($http) {
                 url: 'index/templist/' + id
             });
         };
+        
+        var deletePatientById = function(id){
+            return $http({
+                method: 'GET',
+                url: 'index/deletepatient/' + id
+            });
+        };
 
         return {
             getAllPatients: getAllPatients,
             getTemperatureById: getTemperatureById,
             getPressureById: getPressureById,
-            getPulseById: getPulseById
+            getPulseById: getPulseById,
+            deletePatientById: deletePatientById
         };
     }]);
