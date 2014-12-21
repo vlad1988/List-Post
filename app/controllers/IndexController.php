@@ -45,12 +45,14 @@ class IndexController extends Controller {
     public function deletePatientAction($id = false) {
         $patient = Patients::findFirst($id);
         $patient->delete();
+        $this->view->disable();
     }
 
     public function updatePatientAction($id = false, $name = false) {
         $patient = Patients::findFirst($id);
         $patient->name = $name;
         $patient->update();
+        $this->view->disable();
     }
 
 }

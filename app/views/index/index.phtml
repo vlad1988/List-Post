@@ -55,7 +55,7 @@
                     </div>
                     <!--#Список пациентов-->
                 </div>
-                <div class="col-sm-9">
+                <div class="col-sm-9" ng-controller="DataCtrl">
                     <div ng-include="'templates/listpatient.html'">                 
                     </div>
                     <div id="charts-block" ng-show="showPanels">
@@ -95,6 +95,7 @@
         <script src="app.js"></script>
         <script src="services/RenderChartsService.js"></script>
         <script src="factories/PatientFactory.js"></script>
+        <script src="factories/DataFactory.js"></script>
         <script src="services/RetrieveService.js"></script>
     </body>
 </html>

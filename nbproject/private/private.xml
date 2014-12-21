@@ -5,10 +5,9 @@
         <group>
             <file>file:/C:/xampp/htdocs/temparaturelist/public/app.js</file>
             <file>file:/C:/xampp/htdocs/temparaturelist/public/templates/listpatient.html</file>
-            <file>file:/C:/xampp/htdocs/temparaturelist/public/factories/PatientFactory.js</file>
-            <file>file:/C:/xampp/htdocs/temparaturelist/app/controllers/IndexController.php</file>
+            <file>file:/C:/xampp/htdocs/temparaturelist/public/templates/temperature.html</file>
+            <file>file:/C:/xampp/htdocs/temparaturelist/public/templates/pressure.html</file>
             <file>file:/C:/xampp/htdocs/temparaturelist/app/views/index/index.phtml</file>
-            <file>file:/C:/xampp/htdocs/temparaturelist/app/models/Patients.php</file>
         </group>
     </open-files>
 </project-private>

@@ -6,7 +6,7 @@ class Temparature extends Model {
 
     public $idtemperature;
     public $date;
-    public $temperature;
+    public $temparature;
     public $patients_idpatients;
 
 
