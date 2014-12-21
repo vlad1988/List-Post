@@ -13,25 +13,32 @@ app.factory('Patient', ['$http', function ($http) {
                 url: 'index/pressurelist/' + id
             });
         };
-        
+
         var getPulseById = function (id) {
             return $http({
                 method: 'GET',
                 url: 'index/pulselist/' + id
             });
         };
-        
+
         var getTemperatureById = function (id) {
             return $http({
                 method: 'GET',
                 url: 'index/templist/' + id
             });
         };
-        
-        var deletePatientById = function(id){
+
+        var deletePatientById = function (id) {
             return $http({
                 method: 'GET',
                 url: 'index/deletepatient/' + id
+            });
+        };
+
+        var updatePatientById = function (id, name) {
+            return $http({
+                method: 'GET',
+                url: 'index/updatepatient/' + id + '/' + name
             });
         };
 
@@ -40,6 +47,7 @@ app.factory('Patient', ['$http', function ($http) {
             getTemperatureById: getTemperatureById,
             getPressureById: getPressureById,
             getPulseById: getPulseById,
-            deletePatientById: deletePatientById
+            deletePatientById: deletePatientById,
+            updatePatientById: updatePatientById
         };
     }]);

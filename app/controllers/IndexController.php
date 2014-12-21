@@ -41,10 +41,16 @@ class IndexController extends Controller {
             echo "Отлично, пациент сохранен";
         }
     }
-    
-    public function deletePatientAction($id=false){
+
+    public function deletePatientAction($id = false) {
         $patient = Patients::findFirst($id);
         $patient->delete();
+    }
+
+    public function updatePatientAction($id = false, $name = false) {
+        $patient = Patients::findFirst($id);
+        $patient->name = $name;
+        $patient->update();
     }
 
 }

@@ -1,10 +1,18 @@
 <div class="list-patient" ng-hide="showPanels">
-    <table class="table  table-condensed">
+    <div ng-hide="showReplyForm">
+        <form name="formreply">
+            <label>Имя</label><br/>
+            <input ng-model="replyPatient.name" type="text" class="form-control"/><br/>
+            <button ng-click='hideFormReply()' class="btn btn-sm btn-danger"><i></i>Отмена</button>
+            <button ng-click="updatePatient(replyPatient.id)" class="btn btn-sm btn-primary">Сохранить</button>
+        </form>
+    </div>
+    <table ng-show="showReplyForm" class="table  table-condensed">
         <tr ng-repeat='patient in names'>
             <td>{{patient.name}}</td> 
             <td>
-                <button ng-click='deletePatient(patient.idpatients)' class='btn btn-sm btn-danger'> <i class='glyphicon glyphicon-remove'></i> </button>
-                <button class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-edit'></i> </button>
+                <button ng-click='deletePatient(patient.idpatients)' class='btn btn-sm btn-danger'> <i class='glyphicon glyphicon-remove'></i> Удалить </button>
+                <button ng-click='showingReplyPatientData(patient)' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-edit'></i> Редактировать </button>
             </td>       
         </tr>
     </table>

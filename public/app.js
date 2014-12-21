@@ -5,10 +5,22 @@ app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', 'Retri
     function ($scope, $http, renderCharts, Patient, RetrieveData) {
         $scope.showingAddPatient = false;
         $scope.showPanels = true;
+        $scope.showReplyForm = true;
 
         $scope.showingPanels = function () {
             $scope.showPanels = !$scope.showPanels;
         };
+        $scope.showingReplyPatientData = function (patient) {
+            $scope.replyPatient = {};
+            $scope.showReplyForm = false;
+            $scope.replyPatient.name = patient.name;
+            $scope.replyPatient.id = patient.idpatients;
+        };
+
+        $scope.hideFormReply = function () {
+            $scope.showReplyForm = true;
+        };
+
         $scope.showAddForm = function () {
             $scope.showingAddPatient = !$scope.showingAddPatient;
         };
@@ -74,6 +86,21 @@ app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', 'Retri
                             });
                 });
             }, 2000);
+        };
+        
+        $scope.updatePatient = function (id) {
+            Patient.updatePatientById(id, $scope.replyPatient.name)
+                    .success(function (data, status) {
+                    });
+            setTimeout(function () {
+                $scope.$apply(function () {
+                    Patient.getAllPatients()
+                            .success(function (response) {
+                                $scope.names = response;
+                            });
+                });
+            }, 2000);
+            $scope.showReplyForm = true;
         };
 
     }]);
