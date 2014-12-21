@@ -44,17 +44,16 @@ app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', 'Retri
                     .then(function (result) {
                         var obj = RetrieveData.retrievePressure(result.data);
                         renderCharts.renderPressureChart(patient, obj.dates, obj.systolic, obj.diastolic);
-//                        $scope.pressuredates = obj.dates;
-//                        $scope.systolics = obj.systolic;
-//                        $scope.diastolics = obj.diastolic;
+                        $scope.pressuredates = obj.dates;
+                        $scope.systolic = obj.systolic;
+                        $scope.diastolic = obj.diastolic;
                     });
             Patient.getPulseById(patient.idpatients)
                     .then(function (result) {
                         var obj = RetrieveData.retrievePulse(result.data);
                         renderCharts.renderPulseChart(patient, obj.dates, obj.pulse);
-//                        $scope.pulsedates = obj.dates;
-//                        $scope.pulses = obj.pulse;
-//                        console.log(obj.pulse);
+                        $scope.pulsedates = obj.dates;
+                        $scope.pulses = obj.pulse;
                     });
 
         };

@@ -49,27 +49,30 @@
                     <!--#Поиск по пациентам-->
                     <hr>
                     <!--Список пациентов-->
-                    <div class="patient-block" ng-repeat="patient in names| filter:search |orderBy:'name'" ng-click="selectedPatient(patient)">
+                    <div class="patient-block" ng-repeat="patient in names | filter:search | orderBy:'name'" ng-click="selectedPatient(patient)">
                         <a style="text-decoration: none;" href="" ng-bind="patient.name"></a>
                     </div>
                     <!--#Список пациентов-->
                 </div>
                 <div class="col-sm-9">
-                    <div style="width: 100%;">
+                    <div id="block">
                         <!--Владки с температурой, давлением, пульсом-->
                         <tabset justified="true">
                             <tab heading="Температура">
-                                <div ng-cloak id="container-temperature" style="height: 400px; margin: 0 auto"></div>
+                                <div ng-cloak id="container-temperature" style="min-width: 820px;  height: 400px; "></div>
                             </tab>
                             <tab heading="Пульс">
-                                <div ng-cloak id="container-pulse" style="height: 400px; margin: 0 auto"></div>
+                                <div ng-cloak id="container-pulse" style="min-width: 820px; height: 400px; "></div>
                             </tab>
                             <tab heading="Давление">
-                                <div ng-cloak id="container-pressure" style="height: 400px; margin: 0 auto"></div>
+                                <div ng-cloak id="container-pressure" style="min-width: 820px;  height: 400px;"></div>
                             </tab>
                             <tab heading="Данные">
                                 <div ng-cloak ng-include="'templates/temperature.html'">
-
+                                </div>
+                                <div ng-cloak ng-include="'templates/pulse.html'">
+                                </div>
+                                <div ng-cloak ng-include="'templates/pressure.html'">
                                 </div>
                             </tab>
                         </tabset>

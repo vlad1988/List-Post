@@ -1,0 +1,18 @@
+<h4>Давление</h4>
+<table class="table table-hover">
+    <tr>
+        <th ng-repeat="value in pressuredates">
+            {{value}}
+        </th>
+    </tr>
+    <tr>
+        <td ng-repeat="value in systolic">
+            {{value}}
+        </td>
+    </tr>
+    <tr>
+        <td ng-repeat="value in diastolic track by $index">
+            {{value}}
+        </td>
+    </tr>
+</table>
