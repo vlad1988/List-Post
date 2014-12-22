@@ -34,8 +34,19 @@ class DataController extends Controller {
         }
     }
 
-    public function addpressureAction() {
+    public function addpressureAction($id = false, $date = false, $systolic = false, $diastolic = false) {
         $this->view->disable();
+//        echo $id . " " . $date . " " . $systolic . " " . $diastolic;
+        $pressure = new Pressure();
+        $pressure->date = $date;
+        $pressure->systolic = $systolic;
+        $pressure->diastolic = $diastolic;
+        $pressure->idpatients = $id;
+        if ($pressure->save() == false) {
+            echo 'Не удалось сохранить';
+        } else {
+            echo "Отлично, данные давления пациента сохранены";
+        }
     }
 
 }

@@ -13,9 +13,18 @@ app.factory('Data', ['$http', function ($http) {
                 url: 'data/addpulse/' + id + '/' + date + '/' + pulse
             });
         };
+
+        var addPressureById = function (id, date, systolic, diastolic) {
+            return $http({
+                method: 'GET',
+                url: 'data/addpressure/' + id + '/' + date + '/' + systolic + '/' + diastolic
+            });
+        };
+
         return {
             addTemperatureById: addTemperatureById,
-            addPulseById: addPulseById
+            addPulseById: addPulseById,
+            addPressureById : addPressureById 
         };
     }]);
 

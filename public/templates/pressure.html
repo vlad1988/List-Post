@@ -1,4 +1,19 @@
-<h4>Давление</h4>
+<h4>Давление
+    <button  ng-click="togglePressureForm();
+                pressuredate = null;
+                addsystolic = null; adddiastolic = null;" class="btn btn-xs btn-primary pull-right">Добавить</button>
+</h4>
+<form  name="pressureform" ng-show="showPressureForm">
+    <label>Дата</label>
+    <input type="text" ng-model="pressuredate" class="form-control"/><br/>
+    <label>Систолическое давление</label>
+    <input ng-model="addsystolic" type="text" class="form-control"/> <br/>
+    <label>Диастолическое давление</label>
+    <input ng-model="adddiastolic" type="text" class="form-control"/> <br/>
+    <button ng-click="togglePressureForm()" class="btn btn-sm btn-danger">Отменить</button>
+    <button ng-click="addPressure(namePatient, idPatient, pressuredate, addsystolic, adddiastolic)" class="btn btn-sm btn-primary">Добавить</button>
+    <hr/>
+</form>
 <table class="table table-hover">
     <tr>
         <th ng-repeat="value in pressuredates">
