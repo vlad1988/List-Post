@@ -54,5 +54,12 @@ class IndexController extends Controller {
         $patient->update();
         $this->view->disable();
     }
+    
+    public function show404Action(){
+        echo 'Извините, такого пути нет!';
+    }
+    public function show503Action(){
+        echo 'Извините, такого пути нет!';
+    }
 
 }

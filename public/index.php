@@ -9,6 +9,7 @@ use Phalcon\DI\FactoryDefault;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
 try {
+
 // Register an autoloader
     $loader = new Loader();
     $loader->registerDirs(
@@ -19,6 +20,34 @@ try {
     )->register();
 // Create a DI
     $di = new FactoryDefault();
+
+    $di->set('dispatcher', function() {
+
+        $eventsManager = new \Phalcon\Events\Manager();
+        $eventsManager->attach("dispatch:beforeException", function($event, $dispatcher, $exception) {
+
+            //Handle 404 exceptions
+            if ($exception instanceof \Phalcon\Mvc\Dispatcher\Exception) {
+                $dispatcher->forward(array(
+                    'controller' => 'index',
+                    'action' => 'show404'
+                ));
+                return false;
+            }
+
+            $dispatcher->forward(array(
+                'controller' => 'index',
+                'action' => 'show503'
+            ));
+            return false;
+        });
+
+        $dispatcher = new \Phalcon\Mvc\Dispatcher();
+        $dispatcher->setEventsManager($eventsManager);
+        return $dispatcher;
+    }, true);
+
+
 // Set the database service
     $di['db'] = function() {
         return new DbAdapter(array(
@@ -53,6 +82,7 @@ try {
     $di['tag'] = function() {
         return new Tag();
     };
+
 // Handle the request
     $application = new Application($di);
     echo $application->handle()->getContent();
