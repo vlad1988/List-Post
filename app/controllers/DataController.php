@@ -36,7 +36,6 @@ class DataController extends Controller {
 
     public function addpressureAction($id = false, $date = false, $systolic = false, $diastolic = false) {
         $this->view->disable();
-//        echo $id . " " . $date . " " . $systolic . " " . $diastolic;
         $pressure = new Pressure();
         $pressure->date = $date;
         $pressure->systolic = $systolic;

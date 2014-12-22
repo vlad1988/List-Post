@@ -19,7 +19,9 @@ app.controller("MainCtrl", ['$scope', '$http', '$window', 'renderCharts', 'Patie
             $scope.replyPatient.name = patient.name;
             $scope.replyPatient.id = patient.idpatients;
         };
-
+        $scope.addActive = function (index) {
+            $scope.selected = index;
+        };
         $scope.hideFormReply = function () {
             $scope.showReplyForm = true;
         };

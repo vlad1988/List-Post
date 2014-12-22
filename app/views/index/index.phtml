@@ -50,7 +50,7 @@
                     <!--#Поиск по пациентам-->
                     <hr>
                     <!--Список пациентов-->
-                    <div class="patient-block" ng-repeat="patient in names| filter:search | orderBy:'name'" ng-click="selectedPatient(patient)">
+                    <div class="patient-block" ng-repeat="patient in names| filter:search | orderBy:'name'" ng-class="{sel: $index == selected}" ng-click="selectedPatient(patient); addActive($index)">
                         <a style="text-decoration: none;" href="" ng-bind="patient.name"></a>
                     </div>
                     <!--#Список пациентов-->

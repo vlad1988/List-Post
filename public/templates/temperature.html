@@ -1,11 +1,14 @@
 <h4>Температура 
-    <button ng-click="toggleTemperatureForm(); tempdate=null; addtemp=null" class="pull-right btn btn-xs btn-primary">Добавить</button>
+    <button ng-click="toggleTemperatureForm(); tempdate = null; addtemp = null" class="pull-right btn btn-xs btn-primary">Добавить</button>
 </h4>
-<form novalidate name="tempform" ng-show="showTempForm">
+<form name="tempform" ng-show="showTempForm">
     <label>Дата</label>
-    <input type="text" ng-model="tempdate" class="form-control"/><br/>
+    <input type="text" ng-model="tempdate" class="form-control" required><br/>
+    <div ng-show="tempform.tempdate.$dirty && tempform.tempdate.$invalid">
+        <div ng-show="tempform.tempform.$error.required">поле является обязательным для заполнения</div>
+    </div>
     <label>Температура</label>
-    <input ng-model="addtemp" type="text" class="form-control"/> {{addtemp}}<br/>
+    <input ng-model="addtemp" type="text" class="form-control" required/> {{addtemp}}<br/>
     <button ng-click="toggleTemperatureForm()" class="btn btn-sm btn-danger">Отменить</button>
     <button ng-click="addTemp(namePatient, idPatient, tempdate, addtemp, tempform)" class="btn btn-sm btn-primary">Добавить</button>
     <hr/>
