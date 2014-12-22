@@ -31,6 +31,12 @@ try {
             )
         ));
     };
+
+    $di->setShared('session', function() {
+        $session = new Phalcon\Session\Adapter\Files();
+        $session->start();
+        return $session;
+    });
 // Setting up the view component
     $di['view'] = function() {
         $view = new View();

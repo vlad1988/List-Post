@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="ru" ng-app="TempList">
+    <head>
+        <meta charset="utf-8">
+        <title>List Post</title>
+        <link rel="stylesheet" href="libs/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body role="document" ng-controller="MainCtrl">
+
+
+        <div class="container">
+            <form action="/signup/login" method="post">
+                <input type="text" name="login" placeholder="login"/><br/>
+                <input type="password" placeholder="password" name="password"/><br/>
+                <input type="submit" value="Enter"/>
+            </form>
+        </div>
+
+        <script src="libs/jquery.min.js"></script>
+        <script src="libs/angular.min.js"></script>
+        <script src="libs/highcharts/js/highcharts.js"></script>
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+        <script src="libs/ui-bootstrap.min.js"></script>
+        <script src="app.js"></script>
+        <script src="controllers/DataController.js"></script>
+        <script src="services/RenderChartsService.js"></script>
+        <script src="factories/PatientFactory.js"></script>
+        <script src="factories/DataFactory.js"></script>
+        <script src="services/RetrieveService.js"></script>
+    </body>
+</html>
