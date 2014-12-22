@@ -1,11 +1,14 @@
 var app = angular.module("TempList", ['ui.bootstrap']);
 
-app.controller("MainCtrl", ['$scope', '$http', 'renderCharts', 'Patient', 'RetrieveData',
-    function ($scope, $http, renderCharts, Patient, RetrieveData) {
+app.controller("MainCtrl", ['$scope', '$http', '$window', 'renderCharts', 'Patient', 'RetrieveData',
+    function ($scope, $http, $window, renderCharts, Patient, RetrieveData) {
         $scope.showingAddPatient = false;
         $scope.showPanels = true;
         $scope.showReplyForm = true;
-
+        
+        $scope.reload = function(){
+            $window.location.reload();
+        };
         $scope.showingPanels = function () {
             $scope.showPanels = !$scope.showPanels;
         };
