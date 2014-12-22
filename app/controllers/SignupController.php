@@ -12,13 +12,28 @@ class SignupController extends Controller {
         $login = $this->request->getPost('login');
         $password = $this->request->getPost('password');
         $this->session->set("login", $login);
-         if ($this->session->has("login")) {
+        if ($this->session->has("login")) {
 
             $loginUser = $this->session->get("login");
             echo $loginUser;
         } else {
             echo "логин не установлен";
         }
+    }
+
+    public function viewsessionAction() {
+        if ($this->session->has("login")) {
+
+            $loginUser = $this->session->get("login");
+            echo $loginUser;
+        } else {
+            echo "логин не установлен";
+        }
+    }
+
+    public function logoutAction() {
+        $this->session->remove("login");
+        echo "Session destroy!";
     }
 
 }
