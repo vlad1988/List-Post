@@ -10,13 +10,6 @@ class DataController extends Controller {
 
     public function addtemperatureAction($id = false, $date = false, $temp = false) {
         $this->view->disable();
-//        echo $id;
-//        echo $date;
-//        echo '---';
-//        echo gettype($temp);
-//        echo '---';
-//        $dbnumOfTemp = (double)$temp;
-//        echo gettype($dbnumOfTemp);
         $temperature = new Temparature();
         $temperature->patients_idpatients = $id;
         $temperature->date = $date;
