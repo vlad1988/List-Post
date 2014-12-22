@@ -6,8 +6,16 @@ app.factory('Data', ['$http', function ($http) {
                 url: 'data/addtemperature/' + id + '/' + date + '/' + temp
             });
         };
+
+        var addPulseById = function (id, date, pulse) {
+            return $http({
+                method: 'GET',
+                url: 'data/addpulse/' + id + '/' + date + '/' + pulse
+            });
+        };
         return {
-            addTemperatureById: addTemperatureById
+            addTemperatureById: addTemperatureById,
+            addPulseById: addPulseById
         };
     }]);
 

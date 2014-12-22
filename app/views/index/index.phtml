@@ -56,36 +56,40 @@
                     <!--#Список пациентов-->
                 </div>
                 <div class="col-sm-9" ng-controller="DataCtrl">
-                    <div ng-include="'templates/listpatient.html'">                 
+                    <div class="info" ng-show="info">
+                        <div ng-include="'templates/info.html'">                 
+                        </div>
                     </div>
-                    <div id="charts-block" ng-show="showPanels">
-                        <!--Владки с температурой, давлением, пульсом-->
-                        <tabset justified="true">
-                            <tab heading="Температура">
-                                <div ng-cloak id="container-temperature" style="min-width: 820px;  height: 400px; "></div>
-                            </tab>
-                            <tab heading="Пульс">
-                                <div ng-cloak id="container-pulse" style="min-width: 820px; height: 400px; "></div>
-                            </tab>
-                            <tab heading="Давление">
-                                <div ng-cloak id="container-pressure" style="min-width: 820px;  height: 400px;"></div>
-                            </tab>
-                            <tab heading="Данные">
-                                <div ng-cloak ng-include="'templates/temperature.html'">
-                                </div>
-                                <div ng-cloak ng-include="'templates/pulse.html'">
-                                </div>
-                                <div ng-cloak ng-include="'templates/pressure.html'">
-                                </div>
-                            </tab>
-                        </tabset>
-                        <!--#Владки с температурой, давлением, пульсом-->
+                    <div class="data" ng-hide="info">
+                        <div ng-include="'templates/listpatient.html'">                 
+                        </div>
+                        <div id="charts-block" ng-show="showPanels">
+                            <!--Владки с температурой, давлением, пульсом-->
+                            <tabset justified="true">
+                                <tab heading="Температура">
+                                    <div ng-cloak id="container-temperature" style="min-width: 820px;  height: 400px; "></div>
+                                </tab>
+                                <tab heading="Пульс">
+                                    <div ng-cloak id="container-pulse" style="min-width: 820px; height: 400px; "></div>
+                                </tab>
+                                <tab heading="Давление">
+                                    <div ng-cloak id="container-pressure" style="min-width: 820px;  height: 400px;"></div>
+                                </tab>
+                                <tab heading="Данные">
+                                    <div ng-cloak ng-include="'templates/temperature.html'">
+                                    </div>
+                                    <div ng-cloak ng-include="'templates/pulse.html'">
+                                    </div>
+                                    <div ng-cloak ng-include="'templates/pressure.html'">
+                                    </div>
+                                </tab>
+                            </tabset>
+                            <!--#Владки с температурой, давлением, пульсом-->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
 
         <script src="libs/jquery.min.js"></script>
         <script src="libs/angular.min.js"></script>

@@ -19,13 +19,22 @@ class DataController extends Controller {
         } else {
             echo "Отлично, пациент сохранен";
         }
-   }
-
-    public function addpressureAction() {
-        $this->view->disable();
     }
 
-    public function addpulseAction() {
+    public function addpulseAction($id = false, $date = false, $pvalue = false) {
+        $this->view->disable();
+        $pulse = new Pulse();
+        $pulse->idpatients = $id;
+        $pulse->date = $date;
+        $pulse->pulse = $pvalue;
+        if ($pulse->save() == false) {
+            echo 'Не удалось сохранить';
+        } else {
+            echo "Отлично, данные пульса пациента сохранены";
+        }
+    }
+
+    public function addpressureAction() {
         $this->view->disable();
     }
 
