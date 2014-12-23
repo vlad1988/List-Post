@@ -72,12 +72,16 @@ try {
         $view->setViewsDir('../app/views/');
         return $view;
     };
-// Setup a base URI so that all generated URIs include the "tutorial" folder
-//    $di['url'] = function() {
-//        $url = new Url();
-//        $url->setBaseUri('/tutorial/');
-//        return $url;
-//    };
+    $di['url'] = function() {
+        $url = new Url();
+        $url->setBaseUri('/');
+        return $url;
+    };
+    $di->set('cookies', function() {
+        $cookies = new Phalcon\Http\Response\Cookies();
+        $cookies->useEncryption(false);
+        return $cookies;
+    });
 // Setup the tag helpers
     $di['tag'] = function() {
         return new Tag();

@@ -11,9 +11,24 @@ class SignupController extends Controller {
     public function loginAction() {
         $login = $this->request->getPost('login');
         $password = $this->request->getPost('password');
-        $this->session->set("login", $login);
-        if ($this->session->has("login")) {
 
+        $user = Users::findFirst(array(
+                    "login = ?0",
+                    "bind" => array($login)
+        ));
+
+        if ($user) {
+            $user = Users::findFirst("login='" . $login . "'");
+            $this->session->set("login", $login);
+            $this->session->set("password", $password);
+            $this->session->set("id", $user->userid);
+            $this->response->redirect('');
+        } else {
+            $this->response->redirect('signup/index');
+        }
+
+
+        if ($this->session->has("login")) {
             $loginUser = $this->session->get("login");
             echo $loginUser;
         } else {
@@ -33,7 +48,7 @@ class SignupController extends Controller {
 
     public function logoutAction() {
         $this->session->remove("login");
-        echo "Session destroy!";
+        $this->response->redirect('signup/index');
     }
 
 }

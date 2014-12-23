@@ -5,15 +5,22 @@ use Phalcon\Mvc\Controller;
 class IndexController extends Controller {
 
     public function indexAction() {
-        
+        if ($this->session->has("login")) {
+            $loginUser = $this->session->get("login");
+            $idUser = $this->session->get("id");
+            $this->view->setVar("loginUser", $loginUser);
+            $this->view->setVar("idUser", $idUser);
+        } else {
+            $this->response->redirect('signup/login');
+        }
     }
 
-    public function patientsAction() {
+    public function patientsAction($id=false) {
         $this->view->disable();
         $response = new \Phalcon\Http\Response();
         $this->_isJsonResponse = true;
         $this->response->setContentType('application/json', 'UTF-8');
-        $response->setContent(json_encode(Patients::find()->toArray(), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE));
+        $response->setContent(json_encode(Patients::find("userid= '".$id."'")->toArray(), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE));
         return $response;
     }
 
@@ -54,11 +61,12 @@ class IndexController extends Controller {
         $patient->update();
         $this->view->disable();
     }
-    
-    public function show404Action(){
+
+    public function show404Action() {
         echo 'Извините, такого пути нет!';
     }
-    public function show503Action(){
+
+    public function show503Action() {
         echo 'Извините, такого пути нет!';
     }
 

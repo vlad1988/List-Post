@@ -1,12 +1,12 @@
-var app = angular.module("TempList", []);
+var app = angular.module("TempList", ['ngCookies']);
 //'ui.bootstrap'
-app.controller("MainCtrl", ['$scope', '$http', '$window', 'renderCharts', 'Patient', 'RetrieveData',
-    function ($scope, $http, $window, renderCharts, Patient, RetrieveData) {
+app.controller("MainCtrl", ['$scope', '$cookies', '$cookieStore', '$http', '$window', 'renderCharts', 'Patient', 'RetrieveData',
+    function ($scope, $cookies, $cookieStore, $http, $window, renderCharts, Patient, RetrieveData) {
         $scope.info = true;
         $scope.showingAddPatient = false;
         $scope.showPanels = true;
         $scope.showReplyForm = true;
-
+        var iduser = document.getElementById('iduser').value;
         $scope.reload = function () {
             $window.location.reload();
         };
@@ -48,7 +48,7 @@ app.controller("MainCtrl", ['$scope', '$http', '$window', 'renderCharts', 'Patie
             }, 2000);
         };
 
-        Patient.getAllPatients()
+        Patient.getAllPatientsByLogin(iduser)
                 .success(function (response) {
                     $scope.names = response;
                 });
@@ -111,7 +111,12 @@ app.controller("MainCtrl", ['$scope', '$http', '$window', 'renderCharts', 'Patie
             $scope.showReplyForm = true;
         };
 
+
     }]);
+
+app.controller('CookieCtrl', [function(){
+    console.log('cookie');    
+}]);
 
 
 

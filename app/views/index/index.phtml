@@ -27,12 +27,19 @@
                         <li><a href="" ng-click="showAddForm()"> <i class="glyphicon glyphicon-plus-sign"></i> Добавить лист</a></li>
                         <li><a href="" ng-click="showingPanels()"><i class="glyphicon glyphicon-user"></i> Список пациентов</a></li>
                     </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="" id="login"><?php echo $loginUser;?></a></li>
+                        <input type="hidden" id="iduser" value="<?php echo $idUser;?>">
+                        <li><a href="signup/logout" id="login"><i class="glyphicon glyphicon-log-out"></i> Выход</a></li>
+                    </ul>
+
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
 
 
-        <div class="container">
+        <div class="maincontainer">
             <div class="row">
                 <div class="col-sm-3">
                     <!--Форма для добавления пациента-->
@@ -51,9 +58,11 @@
                     <!--#Поиск по пациентам-->
                     <hr>
                     <!--Список пациентов-->
-                    <div class="patient-block" ng-repeat="patient in names| filter:search | orderBy:'name'" ng-class="{sel: $index == selected}" ng-click="selectedPatient(patient);
+                    <div class="patient-block" ng-repeat="patient in names | filter:search | orderBy:'name'" ng-class="{
+                                sel: $index == selected
+                            }" ng-click="selectedPatient(patient);
                                     addActive($index)">
-                        <a style="text-decoration: none;" href="" ng-bind="patient.name"></a>
+                        <a style="text-decoration: none;" href="" >{{patient.name}} {{patient.card}}</a>
                     </div>
                     <!--#Список пациентов-->
                 </div>
@@ -131,6 +140,7 @@
         <script src="libs/jquery.min.js"></script>
         <script src="libs/angular.min.js"></script>
         <script src="libs/highcharts/js/highcharts.js"></script>
+        <script src="libs/angular-cookies.min.js"></script>
         <script src="http://code.highcharts.com/modules/exporting.js"></script>
         <script src=""></script>
         <!--<script src="libs/ui-bootstrap.min.js"></script>-->

@@ -1,9 +1,9 @@
 app.factory('Patient', ['$http', function ($http) {
 
-        var getAllPatients = function () {
+        var getAllPatientsByLogin = function (id) {
             return $http({
                 method: 'GET',
-                url: 'index/patients'
+                url: 'index/patients/' + id
             });
         };
 
@@ -43,7 +43,7 @@ app.factory('Patient', ['$http', function ($http) {
         };
 
         return {
-            getAllPatients: getAllPatients,
+            getAllPatientsByLogin: getAllPatientsByLogin,
             getTemperatureById: getTemperatureById,
             getPressureById: getPressureById,
             getPulseById: getPulseById,

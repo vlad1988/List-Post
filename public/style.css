@@ -1,4 +1,6 @@
-
+.maincontainer {
+    padding: .8%;
+}
 .patient-block {
     border-bottom: 1px dotted #ccc;
     padding: 1.5%;
