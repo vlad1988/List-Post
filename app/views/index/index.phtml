@@ -3,10 +3,13 @@
 <html lang="ru" ng-app="TempList">
     <head>
         <meta charset="utf-8">
-        <title>List Post</title>
+        <title>Nurse Post</title>
         <link rel="stylesheet" href="libs/dist/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="libs/dist/css/bs.bootstrap.min.css"/>
         <link rel="stylesheet" href="style.css"/>
+        <link rel="icon" 
+              type="image/png" 
+              href="medius.ico">
     </head>
     <body role="document" ng-controller="MainCtrl">
 
@@ -20,7 +23,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="" ng-click="reload()">List Post</a>
+                    <a class="navbar-brand" href="" ng-click="reload()">Nurse Post</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -29,8 +32,8 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="" id="login"><?php echo $loginUser;?></a></li>
-                        <input type="hidden" id="iduser" value="<?php echo $idUser;?>">
+                        <li><a href="" id="login"><?php echo $loginUser; ?></a></li>
+                        <input type="hidden" id="iduser" value="<?php echo $idUser; ?>">
                         <li><a href="signup/logout" id="login"><i class="glyphicon glyphicon-log-out"></i> Выход</a></li>
                     </ul>
 
@@ -46,11 +49,19 @@
                     <div ng-show="showingAddPatient">
                         <form name="form">
                             <label>Карточка</label><br/>
-                            <input type="text" placeholder="Введите номер карты" ng-model="card" name="card" class="form-control"/><br/>
+                            <input type="text" placeholder="Введите номер карты" ng-model="card" name="card" class="form-control" required/><br/>
+                            <div  ng-show="form.card.$dirty && form.card.$invalid">
+                                <div ng-show="form.card.$error.required">поле является обязательным для заполнения</div>
+                            </div>
                             <label>Имя</label><br/>
-                            <input type="text" placeholder="Введите имя пациента" ng-model="name" name="name" class="form-control"/><br/>
-                            <button ng-click="cancelPatientForm(); card=null; name=null" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> Отмена</button>
-                            <button ng-click="sendPatient()" name="send" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-save"></i> Сохранить</button>
+                            <input type="text" placeholder="Введите имя пациента" ng-model="name" name="name" required class="form-control"/><br/>
+                            <div  ng-show="form.name.$dirty && form.name.$invalid">
+                                <div ng-show="form.name.$error.required">поле является обязательным для заполнения</div>
+                            </div>
+                            <button ng-click="cancelPatientForm();
+                                    card = null;
+                                    name = null" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> Отмена</button>
+                            <button ng-disabled="form.$dirty && form.$invalid" ng-click="sendPatient()" name="send" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-save"></i> Сохранить</button>
                         </form>
                         <hr>
                     </div>
@@ -64,7 +75,7 @@
                                 sel: $index == selected
                             }" ng-click="selectedPatient(patient);
                                     addActive($index)">
-                        <a style="text-decoration: none;" href="" >{{patient.name}} {{patient.card}}</a>
+                        <a style="text-decoration: none;" href="" >{{patient.name}} - {{patient.card}}</a>
                     </div>
                     <!--#Список пациентов-->
                 </div>

@@ -20,9 +20,9 @@
     <label>Дата</label>
     <input type="text" ng-model="tempdate" class="form-control" required><br/>
     <label>Температура</label>
-    <input ng-model="addtemp" type="text" class="form-control" required/> {{addtemp}}<br/>
+    <input ng-model="addtemp" type="text" class="form-control" required/> <br/>
     <button ng-click="toggleTemperatureForm()" class="btn btn-sm btn-danger">Отменить</button>
-    <button ng-click="addTemp(namePatient, idPatient, tempdate, addtemp, tempform)" class="btn btn-sm btn-primary">Добавить</button>
+    <button  ng-click="addTemp(namePatient, idPatient, tempdate, addtemp, tempform)" class="btn btn-sm btn-primary">Добавить</button>
     <hr/>
 </form>
 <table class="table table-hover">

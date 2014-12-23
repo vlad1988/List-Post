@@ -5,17 +5,33 @@
             <input ng-model="replyPatient.card" type="text" class="form-control"/><br/>
             <label>Имя</label><br/>
             <input ng-model="replyPatient.name" type="text" class="form-control"/><br/>
-            <button ng-click='hideFormReply(); replyPatient.card=null; replyPatient.name=null' class="btn btn-sm btn-danger"><i></i>Отмена</button>
+            <button ng-click='hideFormReply();
+                replyPatient.card = null;
+                replyPatient.name = null' class="btn btn-sm btn-danger"><i></i>Отмена</button>
             <button ng-click="updatePatient(replyPatient.id)" class="btn btn-sm btn-primary">Сохранить</button>
         </form>
     </div>
-    <table ng-show="showReplyForm" class="table  table-condensed">
-        <tr ng-repeat='patient in names'>
-            <td>{{patient.name}}</td> 
-            <td>
-                <button ng-click='deletePatient(patient.idpatients)' class='btn btn-xs btn-danger'> <i class='glyphicon glyphicon-remove'></i> Удалить </button>
-                <button ng-click='showingReplyPatientData(patient)' class='btn btn-xs btn-primary'> <i class='glyphicon glyphicon-edit'></i> Редактировать </button>
-            </td>       
-        </tr>
-    </table>
+    <div ng-show="showReplyForm">
+        <input type="search" ng-model="searchtable" placeholder="Поиск" class="form-control">
+        <table  class="table  table-condensed">
+            <hr>
+            <tr>
+                <th>
+                    Номер карты
+                </th>
+                <th>
+                    Имя пациента
+                </th>
+                <th>
+                </th>
+            </tr>
+            <tr ng-repeat="patient in names| filter:searchtable | orderBy:'name'">
+                <td>{{patient.card}} </td> <td>{{patient.name}} </td> 
+                <td>
+                    <button ng-click='deletePatient(patient.idpatients)' class='btn btn-xs btn-danger'> <i class='glyphicon glyphicon-remove'></i> Удалить </button>
+                    <button ng-click='showingReplyPatientData(patient)' class='btn btn-xs btn-primary'> <i class='glyphicon glyphicon-edit'></i> Редактировать </button>
+                </td>       
+            </tr>
+        </table>
+    </div>
 </div>
