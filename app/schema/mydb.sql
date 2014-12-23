@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Час створення: Гру 23 2014 р., 18:41
+-- Час створення: Гру 24 2014 р., 00:30
 -- Версія сервера: 5.6.20
 -- Версія PHP: 5.5.15
 
@@ -31,16 +31,17 @@ CREATE TABLE IF NOT EXISTS `patients` (
   `card` varchar(45) NOT NULL,
   `name` varchar(250) DEFAULT NULL,
   `userid` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Дамп даних таблиці `patients`
 --
 
 INSERT INTO `patients` (`idpatients`, `card`, `name`, `userid`) VALUES
-(1, 'A25', 'Петров Сергей Юрьевич', 1),
+(1, 'A251', 'Петров Сергей Юрьевич', 1),
 (2, 'B12', 'Сергиенко Иван Игоревич', 2),
-(6, '3452', 'Михайленко Сергей Олегович', 2);
+(6, 'A213', 'Михайленко Сергей Олегович', 2),
+(10, '№43555', 'Петров Иван Игоревич', 3);
 
 -- --------------------------------------------------------
 
@@ -54,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `pressure` (
   `date` varchar(45) NOT NULL,
   `systolic` int(11) NOT NULL,
   `diastolic` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Дамп даних таблиці `pressure`
@@ -75,7 +76,9 @@ INSERT INTO `pressure` (`idpressure`, `idpatients`, `date`, `systolic`, `diastol
 (13, 6, '10.01(у)', 140, 80),
 (14, 6, '10.01(в)', 120, 80),
 (15, 6, '10.02(у)', 120, 70),
-(16, 6, '10.02(в)', 110, 70);
+(16, 6, '10.02(в)', 110, 70),
+(17, 6, '10.03(у)', 120, 90),
+(19, 6, '10.03(в)', 130, 90);
 
 -- --------------------------------------------------------
 
@@ -112,7 +115,6 @@ INSERT INTO `pulse` (`idpulse`, `idpatients`, `date`, `pulse`) VALUES
 (15, 6, '10.03(у)', 85),
 (16, 6, '10.04(в)', 86),
 (17, 6, '10.05(у)', 87),
-(18, 6, '10.05(в)', 82),
 (19, 1, '10.05(у)', 72);
 
 -- --------------------------------------------------------
@@ -126,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `temparature` (
   `date` varchar(45) DEFAULT NULL,
   `temparature` double DEFAULT NULL,
   `patients_idpatients` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
 -- Дамп даних таблиці `temparature`
@@ -151,7 +153,6 @@ INSERT INTO `temparature` (`idtemparature`, `date`, `temparature`, `patients_idp
 (16, '10.04(у)', 37.6, 6),
 (17, '10.05(в)', 37.2, 6),
 (18, '10.06(у)', 37.6, 6),
-(19, '10.06(в)', 36.8, 6),
 (20, '10.07(у)', 36.6, 6),
 (21, '10.07(в)', 36.8, 6),
 (22, '10.08(у)', 37, 6),
@@ -165,7 +166,9 @@ INSERT INTO `temparature` (`idtemparature`, `date`, `temparature`, `patients_idp
 (30, '10.05(в)', 36.8, 2),
 (31, '10.06(у)', 38.1, 1),
 (32, '10.06(e)', 36.6, 2),
-(33, '10.06(у)', 37.9, 1);
+(33, '10.06(у)', 37.9, 1),
+(34, '11.01(утром)', 37, 10),
+(35, '11.02(вечер)', 37.2, 10);
 
 -- --------------------------------------------------------
 
@@ -177,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 `userid` int(11) NOT NULL,
   `login` varchar(120) NOT NULL,
   `password` varchar(45) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп даних таблиці `users`
@@ -185,7 +188,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`userid`, `login`, `password`) VALUES
 (1, 'admin', 'admin'),
-(2, 'myadmin', '1111');
+(2, 'myadmin', '1111'),
+(3, 'hospadmin', 'admin7405');
 
 --
 -- Indexes for dumped tables
@@ -229,12 +233,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-MODIFY `idpatients` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `idpatients` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `pressure`
 --
 ALTER TABLE `pressure`
-MODIFY `idpressure` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+MODIFY `idpressure` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `pulse`
 --
@@ -244,12 +248,12 @@ MODIFY `idpulse` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 -- AUTO_INCREMENT for table `temparature`
 --
 ALTER TABLE `temparature`
-MODIFY `idtemparature` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
+MODIFY `idtemparature` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- Обмеження зовнішнього ключа збережених таблиць
 --
