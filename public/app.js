@@ -46,7 +46,7 @@ app.controller("MainCtrl", ['$scope', '$http', '$window', 'renderCharts', 'Patie
                                 $scope.names = response;
                             });
                 });
-            }, 2000);
+            }, 1000);
         };
 
         Patient.getAllPatientsById(iduser)
@@ -94,7 +94,7 @@ app.controller("MainCtrl", ['$scope', '$http', '$window', 'renderCharts', 'Patie
                                 $scope.names = response;
                             });
                 });
-            }, 2000);
+            }, 1000);
         };
 
         $scope.updatePatient = function (id) {
@@ -108,7 +108,7 @@ app.controller("MainCtrl", ['$scope', '$http', '$window', 'renderCharts', 'Patie
                                 $scope.names = response;
                             });
                 });
-            }, 2000);
+            }, 1000);
             $scope.showReplyForm = true;
         };
 

@@ -21,6 +21,24 @@ class DataController extends Controller {
         }
     }
 
+    public function deletetemperatureAction($id, $date) {
+        $temperature = Temparature::find("date='" . $date . "' and patients_idpatients='" . $id . "'");
+        $temperature->delete();
+        $this->view->disable();
+    }
+    
+    public function deletepulseAction($id, $date) {
+        $pulse = Pulse::find("date='" . $date . "' and idpatients='" . $id . "'");
+        $pulse->delete();
+        $this->view->disable();
+    }
+    
+    public function deletepressureAction($id, $date){
+        $pressure = Pressure::find("date='" . $date . "' and idpatients='" . $id . "'");
+        $pressure->delete();
+        $this->view->disable();
+    }
+
     public function addpulseAction($id = false, $date = false, $pvalue = false) {
         $this->view->disable();
         $pulse = new Pulse();

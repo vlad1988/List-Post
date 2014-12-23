@@ -1,6 +1,21 @@
 <h4>Температура 
-    <button ng-click="toggleTemperatureForm(); tempdate = null; addtemp = null" class="pull-right btn btn-xs btn-primary">Добавить</button>
+    <div class="pull-right">
+        <button ng-click="toggleDeleteTemp()" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove-sign"></i> Удалить</button>
+        <button ng-click="toggleTemperatureForm(); tempdate = null; addtemp = null" class=" btn btn-xs btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Добавить</button>
+    </div>
 </h4>
+
+<p class="clearfix"></p>
+<div ng-show="showDeleteTemp">
+    <div>
+        <span ng-repeat='datetemp in tempdates track by $index'>
+            {{datetemp}} 
+            <a href="" ng-click="deleteTemp(namePatient, idPatient, datetemp)">
+                <i class="glyphicon glyphicon-remove"></i>
+            </a>
+        </span>
+    </div>
+</div>
 <form name="tempform" ng-show="showTempForm">
     <label>Дата</label>
     <input type="text" ng-model="tempdate" class="form-control" required><br/>
