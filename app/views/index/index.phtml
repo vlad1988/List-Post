@@ -45,9 +45,11 @@
                     <!--Форма для добавления пациента-->
                     <div ng-show="showingAddPatient">
                         <form name="form">
+                            <label>Карточка</label><br/>
+                            <input type="text" placeholder="Введите номер карты" ng-model="card" name="card" class="form-control"/><br/>
                             <label>Имя</label><br/>
                             <input type="text" placeholder="Введите имя пациента" ng-model="name" name="name" class="form-control"/><br/>
-                            <button ng-click="cancelPatientForm()" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> Отмена</button>
+                            <button ng-click="cancelPatientForm(); card=null; name=null" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> Отмена</button>
                             <button ng-click="sendPatient()" name="send" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-save"></i> Сохранить</button>
                         </form>
                         <hr>

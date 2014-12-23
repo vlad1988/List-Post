@@ -1,9 +1,11 @@
 <div class="list-patient" ng-hide="showPanels">
     <div ng-hide="showReplyForm">
         <form name="formreply">
+            <label>Карточка</label><br/>
+            <input ng-model="replyPatient.card" type="text" class="form-control"/><br/>
             <label>Имя</label><br/>
             <input ng-model="replyPatient.name" type="text" class="form-control"/><br/>
-            <button ng-click='hideFormReply()' class="btn btn-sm btn-danger"><i></i>Отмена</button>
+            <button ng-click='hideFormReply(); replyPatient.card=null; replyPatient.name=null' class="btn btn-sm btn-danger"><i></i>Отмена</button>
             <button ng-click="updatePatient(replyPatient.id)" class="btn btn-sm btn-primary">Сохранить</button>
         </form>
     </div>

@@ -1,6 +1,6 @@
 app.factory('Patient', ['$http', function ($http) {
 
-        var getAllPatientsByLogin = function (id) {
+        var getAllPatientsById = function (id) {
             return $http({
                 method: 'GET',
                 url: 'index/patients/' + id
@@ -35,15 +35,15 @@ app.factory('Patient', ['$http', function ($http) {
             });
         };
 
-        var updatePatientById = function (id, name) {
+        var updatePatientById = function (id, name, card) {
             return $http({
                 method: 'GET',
-                url: 'index/updatepatient/' + id + '/' + name
+                url: 'index/updatepatient/' + id + '/' + name + '/'+ card
             });
         };
 
         return {
-            getAllPatientsByLogin: getAllPatientsByLogin,
+            getAllPatientsById: getAllPatientsById,
             getTemperatureById: getTemperatureById,
             getPressureById: getPressureById,
             getPulseById: getPulseById,

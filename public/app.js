@@ -1,7 +1,7 @@
 var app = angular.module("TempList", ['ngCookies']);
 //'ui.bootstrap'
-app.controller("MainCtrl", ['$scope', '$cookies', '$cookieStore', '$http', '$window', 'renderCharts', 'Patient', 'RetrieveData',
-    function ($scope, $cookies, $cookieStore, $http, $window, renderCharts, Patient, RetrieveData) {
+app.controller("MainCtrl", ['$scope', '$http', '$window', 'renderCharts', 'Patient', 'RetrieveData',
+    function ($scope,  $http, $window, renderCharts, Patient, RetrieveData) {
         $scope.info = true;
         $scope.showingAddPatient = false;
         $scope.showPanels = true;
@@ -18,6 +18,7 @@ app.controller("MainCtrl", ['$scope', '$cookies', '$cookieStore', '$http', '$win
             $scope.showReplyForm = false;
             $scope.replyPatient.name = patient.name;
             $scope.replyPatient.id = patient.idpatients;
+            $scope.replyPatient.card = patient.card;
         };
         $scope.addActive = function (index) {
             $scope.selected = index;
@@ -34,13 +35,13 @@ app.controller("MainCtrl", ['$scope', '$cookies', '$cookieStore', '$http', '$win
         };
 
         $scope.sendPatient = function () {
-            $http.get("index/addpatient/" + $scope.name).success(function (data, status) {
+            $http.get("index/addpatient/" + $scope.name+"/" +iduser+"/"+$scope.card).success(function (data, status) {
 
             });
             $scope.showingAddPatient = false;
             setTimeout(function () {
                 $scope.$apply(function () {
-                    Patient.getAllPatients()
+                    Patient.getAllPatientsById(iduser)
                             .success(function (response) {
                                 $scope.names = response;
                             });
@@ -48,7 +49,7 @@ app.controller("MainCtrl", ['$scope', '$cookies', '$cookieStore', '$http', '$win
             }, 2000);
         };
 
-        Patient.getAllPatientsByLogin(iduser)
+        Patient.getAllPatientsById(iduser)
                 .success(function (response) {
                     $scope.names = response;
                 });
@@ -88,7 +89,7 @@ app.controller("MainCtrl", ['$scope', '$cookies', '$cookieStore', '$http', '$win
                     });
             setTimeout(function () {
                 $scope.$apply(function () {
-                    Patient.getAllPatients()
+                    Patient.getAllPatientsById(iduser)
                             .success(function (response) {
                                 $scope.names = response;
                             });
@@ -97,12 +98,12 @@ app.controller("MainCtrl", ['$scope', '$cookies', '$cookieStore', '$http', '$win
         };
 
         $scope.updatePatient = function (id) {
-            Patient.updatePatientById(id, $scope.replyPatient.name)
+            Patient.updatePatientById(id, $scope.replyPatient.name, $scope.replyPatient.card)
                     .success(function (data, status) {
                     });
             setTimeout(function () {
                 $scope.$apply(function () {
-                    Patient.getAllPatients()
+                    Patient.getAllPatientsById(iduser)
                             .success(function (response) {
                                 $scope.names = response;
                             });

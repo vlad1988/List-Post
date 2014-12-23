@@ -15,12 +15,12 @@ class IndexController extends Controller {
         }
     }
 
-    public function patientsAction($id=false) {
+    public function patientsAction($id = false) {
         $this->view->disable();
         $response = new \Phalcon\Http\Response();
         $this->_isJsonResponse = true;
         $this->response->setContentType('application/json', 'UTF-8');
-        $response->setContent(json_encode(Patients::find("userid= '".$id."'")->toArray(), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE));
+        $response->setContent(json_encode(Patients::find("userid= '" . $id . "'")->toArray(), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE));
         return $response;
     }
 
@@ -39,9 +39,11 @@ class IndexController extends Controller {
         echo json_encode(Pulse::find("idpatients= '" . $id . "'")->toArray(), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
     }
 
-    public function addPatientAction($name) {
+    public function addPatientAction($name, $iduser, $card) {
         $patient = new Patients();
         $patient->name = $name;
+        $patient->card = $card;
+        $patient->userid = $iduser;
         if ($patient->save() == false) {
             echo 'Не удалось сохранить';
         } else {
@@ -55,9 +57,10 @@ class IndexController extends Controller {
         $this->view->disable();
     }
 
-    public function updatePatientAction($id = false, $name = false) {
+    public function updatePatientAction($id = false, $name = false, $card=false) {
         $patient = Patients::findFirst($id);
         $patient->name = $name;
+        $patient->card = $card;
         $patient->update();
         $this->view->disable();
     }
