@@ -1,5 +1,5 @@
-var app = angular.module("TempList", ['ui.bootstrap']);
-
+var app = angular.module("TempList", []);
+//'ui.bootstrap'
 app.controller("MainCtrl", ['$scope', '$http', '$window', 'renderCharts', 'Patient', 'RetrieveData',
     function ($scope, $http, $window, renderCharts, Patient, RetrieveData) {
         $scope.info = true;

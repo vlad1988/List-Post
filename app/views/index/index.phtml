@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <title>List Post</title>
         <link rel="stylesheet" href="libs/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="libs/dist/css/bs.bootstrap.min.css"/>
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body role="document" ng-controller="MainCtrl">
@@ -50,12 +51,14 @@
                     <!--#Поиск по пациентам-->
                     <hr>
                     <!--Список пациентов-->
-                    <div class="patient-block" ng-repeat="patient in names| filter:search | orderBy:'name'" ng-class="{sel: $index == selected}" ng-click="selectedPatient(patient); addActive($index)">
+                    <div class="patient-block" ng-repeat="patient in names| filter:search | orderBy:'name'" ng-class="{sel: $index == selected}" ng-click="selectedPatient(patient);
+                                    addActive($index)">
                         <a style="text-decoration: none;" href="" ng-bind="patient.name"></a>
                     </div>
                     <!--#Список пациентов-->
                 </div>
                 <div class="col-sm-9" ng-controller="DataCtrl">
+
                     <div class="info" ng-show="info">
                         <div ng-include="'templates/info.html'">                 
                         </div>
@@ -65,7 +68,41 @@
                         </div>
                         <div id="charts-block" ng-show="showPanels">
                             <!--Владки с температурой, давлением, пульсом-->
-                            <tabset justified="true">
+
+                            <div role="tabpanel">
+
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#temperature" aria-controls="temperature" role="tab" data-toggle="tab">Температура</a></li>
+                                    <li role="presentation"><a href="#pulse" aria-controls="pulse" role="tab" data-toggle="tab">Пульс</a></li>
+                                    <li role="presentation"><a href="#pressure" aria-controls="pressure" role="tab" data-toggle="tab">Давление</a></li>
+                                    <li role="presentation"><a href="#datas" aria-controls="datas" role="tab" data-toggle="tab">Данные</a></li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="temperature">
+                                        <div ng-cloak id="container-temperature" style="min-width: 820px;  height: 400px; "></div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="pulse">
+                                        <div ng-cloak id="container-pulse" style="min-width: 820px; height: 400px; "></div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="pressure">
+                                        <div ng-cloak id="container-pressure" style="min-width: 820px;  height: 400px;"></div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="datas">
+                                        <div ng-cloak ng-include="'templates/temperature.html'">
+                                        </div>
+                                        <div ng-cloak ng-include="'templates/pulse.html'">
+                                        </div>
+                                        <div ng-cloak ng-include="'templates/pressure.html'">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+<!--                            <tabset justified="true">
                                 <tab heading="Температура">
                                     <div ng-cloak id="container-temperature" style="min-width: 820px;  height: 400px; "></div>
                                 </tab>
@@ -83,7 +120,7 @@
                                     <div ng-cloak ng-include="'templates/pressure.html'">
                                     </div>
                                 </tab>
-                            </tabset>
+                            </tabset>-->
                             <!--#Владки с температурой, давлением, пульсом-->
                         </div>
                     </div>
@@ -95,7 +132,9 @@
         <script src="libs/angular.min.js"></script>
         <script src="libs/highcharts/js/highcharts.js"></script>
         <script src="http://code.highcharts.com/modules/exporting.js"></script>
-        <script src="libs/ui-bootstrap.min.js"></script>
+        <script src=""></script>
+        <!--<script src="libs/ui-bootstrap.min.js"></script>-->
+        <script src="libs/bootstrap.min.js"></script>
         <script src="app.js"></script>
         <script src="controllers/DataController.js"></script>
         <script src="services/RenderChartsService.js"></script>
