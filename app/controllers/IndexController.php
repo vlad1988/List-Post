@@ -14,6 +14,13 @@ class IndexController extends Controller {
             $this->response->redirect('signup/login');
         }
     }
+	
+	
+	public function deletePatientAction($id) {
+        $patient = Patients::findFirst("idpatients='".$id."'");
+        $patient->delete();
+        $this->view->disable();
+    }
 
     public function patientsAction($id = false) {
         $this->view->disable();
@@ -51,11 +58,6 @@ class IndexController extends Controller {
         }
     }
 
-    public function deletePatientAction($id = false) {
-        $patient = Patients::findFirst($id);
-        $patient->delete();
-        $this->view->disable();
-    }
 
     public function updatePatientAction($id = false, $name = false, $card=false) {
         $patient = Patients::findFirst($id);
